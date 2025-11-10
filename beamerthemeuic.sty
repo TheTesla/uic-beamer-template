@@ -1,5 +1,6 @@
 % Template for UIC presentations with LaTeX beamer
 % by Usama Muneeb <umunee2@uic.edu>
+% 2025/11 modified by Stefan Helmert <stefan.helmert@htw.dresden.de> for HTW Dresden 
 % 
 % This template is a derivative of the SINTEF template
 % by Federico Zenith <federico.zenith@sintef.no>, which in turn is
@@ -153,7 +154,7 @@
 \newlength{\titleboxwidth}
 % Define the title page
 \setbeamertemplate{title page}{%
-  \vskip0pt plus 1filll%
+  \vskip-20mm 
   \hspace{-12mm}% Pull back the box in an inelegant way - but it works!
   \begin{beamercolorbox}[wd=\titleboxwidth,sep=10pt,leftskip=8mm]{title}%
     {\usebeamerfont{title}\inserttitle}
@@ -168,13 +169,13 @@
 
 \newcommand{\TikzSplitSlide}[1]{%
   \rule{0.4\paperwidth}{0pt}%
-  \begin{tikzpicture}
-    \clip (-0.1\paperwidth,-0.5\paperheight) -- 
+  \begin{tikzpicture}[remember picture,overlay,shift={(0.1\paperwidth,-0.5\paperheight)}]
+    \clip (-0.2\paperwidth,-0.5\paperheight) -- 
           ( 0.5\paperwidth,-0.5\paperheight) -- 
           ( 0.5\paperwidth, 0.5\paperheight) -- 
-          ( 0.1\paperwidth, 0.5\paperheight) -- cycle; 
-    \node at (0.2\paperwidth,0) {%
-      \includegraphics[height=\paperheight]{#1}%
+          ( 0.3\paperwidth, 0.5\paperheight) -- cycle; 
+    \node at (0.1\paperwidth,0) {%
+      \includegraphics[height=1.1\paperheight]{#1}%
     };
   \end{tikzpicture}
 }
