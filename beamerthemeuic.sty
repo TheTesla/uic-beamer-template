@@ -34,6 +34,23 @@
 
 \RequirePackage{graphicx,uiccolor}
 
+
+
+
+\newcommand{\authortitle}[2][]{%
+	\def\beamer@authortitle{#2}% lange Form
+	\def\beamer@shortauthortitle{#1}% kurze Form optional
+}
+
+\newcommand{\insertauthortitle}{%
+	\ifx\beamer@shortauthortitle\@empty
+	\beamer@authortitle
+	\else
+	\beamer@shortauthortitle
+	\fi
+}
+
+
 % No navigation symbols
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{page number in head/foot}[totalframenumber]%
@@ -61,10 +78,10 @@
 }
 \footlinecolor{} % Default: no footline (enabled after title page)
 
-\pgfdeclareimage[width=0.09\paperwidth]{redlogo}{assets/circular_rgb.pdf}
+\pgfdeclareimage[height=0.09\paperheight]{collogo}{assets/htwd_hor_col.pdf}
 \pgfdeclareimage[width=0.09\paperwidth]{whitelogo}{assets/circular_white.pdf}
 \pgfdeclareimage[width=0.09\paperwidth]{nologo}{assets/placeholder.png}
-\newcommand{\@UIClogo}{redlogo}
+\newcommand{\@UIClogo}{collogo}
 
 % Set colours
 % NOTE! Beamer colors should be set in the preamble. It often works fine in the 
@@ -82,7 +99,7 @@
 	\ifstrequal{#1}{light}{%
 		\setbeamercolor{normal text}{fg=uicblue,bg=white}
 		\setbeamercolor{structure}{fg=uicblue}
-		\renewcommand{\@UIClogo}{redlogo}
+		\renewcommand{\@UIClogo}{collogo}
 		\setbeamercolor{block title}{fg=white,bg=uicblue}
 		\setbeamercolor{block body}{fg=white,bg=uicblue}
 		\usebeamercolor[fg]{normal text}
@@ -103,7 +120,9 @@
 \setbeamercolor{author}{fg=black}
 \setbeamercolor{date}{fg=black}
 
-\setbeamerfont{author}{size=\scriptsize}
+\setbeamerfont{authortitle}{size=\scriptsize}
+\setbeamerfont{author}{series=\bfseries,size=\scriptsize}
+\setbeamerfont{institute}{size=\scriptsize}
 \setbeamerfont{date}{size=\tiny}
 \setbeamerfont{title}{series=\bfseries}
 \setbeamerfont{subtitle}{series=\mdseries,size=\footnotesize}
@@ -154,17 +173,41 @@
 \newlength{\titleboxwidth}
 % Define the title page
 \setbeamertemplate{title page}{%
-  \vskip-20mm 
-  \hspace{-12mm}% Pull back the box in an inelegant way - but it works!
-  \begin{beamercolorbox}[wd=\titleboxwidth,sep=10pt,leftskip=8mm]{title}%
-    {\usebeamerfont{title}\inserttitle}
+  %\vskip-20mm 
+  %\hspace{-12mm}% Pull back the box in an inelegant way - but it works!
+  \begin{beamercolorbox}[wd=\titleboxwidth]{title}%
+  \begin{tikzpicture}[remember picture,overlay]
+
+  	
+  	
+	\node[anchor=south west, xshift=8mm, yshift=4cm, text width=\titleboxwidth] at (current page.south west) {%
+		{\usebeamerfont{title}\inserttitle\\\usebeamerfont{subtitle}\insertsubtitle}
+	};
+
+	\node[anchor=south west, xshift=8mm, yshift=2cm, text width=\titleboxwidth] at (current page.south west) {%
+		{   
+			\\
+			{\usebeamerfont{authortitle}\usebeamercolor[fg]{author}\insertauthortitle} \\
+			{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor} \\
+			{\usebeamerfont{institute}\usebeamercolor[fg]{author}\insertinstitute}
+		}
+	};
+	\node[anchor=south west, xshift=8mm, yshift=1cm] at (current page.south west) {%
+		{\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate}
+	};
+\end{tikzpicture}
   
-    {\usebeamerfont{subtitle}\insertsubtitle}
+    
   
-    {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}
-  
-    {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate}
+   
+   
+   	
+
+
   \end{beamercolorbox}
+  
+  
+
 }
 
 \newcommand{\TikzSplitSlide}[1]{%
