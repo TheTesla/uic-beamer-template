@@ -141,8 +141,8 @@
 \setbeamertemplate{blocks}[rounded]
 
 % Bullets in several levels
-\setbeamertemplate{itemize item}{\textbullet}
-\setbeamertemplate{itemize subitem}{\textemdash}
+\setbeamertemplate{itemize item}{\textemdash}
+\setbeamertemplate{itemize subitem}{\textbullet}
 \setbeamertemplate{itemize subsubitem}{\ensuremath{\circ}}
 
 \newenvironment{colorblock}[3][white]{%
@@ -156,15 +156,19 @@
 }
 
 % Put the logo in each slide's top left area
-\setbeamertemplate{headline}{\vspace{0.03\textwidth}\hspace{0.06\textwidth}\pgfuseimage{\@UIClogo}}
+%\setbeamertemplate{headline}{test1}
+
+
+
+
 
 \newlength{\titlemanualoffset}
 \setlength{\titlemanualoffset}{0ex}
 % Define frame title and subtitle layout
 \setbeamertemplate{frametitle}{%
-  \vspace*{-3.65ex}
+  \vspace*{5mm}
   \vspace*{\titlemanualoffset}
-  \begin{beamercolorbox}[leftskip=2cm]{frametitle}%
+  \begin{beamercolorbox}[leftskip=0cm]{frametitle}%
     \usebeamerfont{frametitle}\insertframetitle\\
     % Setting an invisible placeholder subtitle will fix the title in a constant position
     % This is due to the way the default template is defined in `beamerouterthemedefault.sty'
@@ -178,14 +182,17 @@
 
 \newlength{\titleboxwidth}
 % Define the title page
+
 \setbeamertemplate{title page}{%
+
   %\vskip-20mm 
   %\hspace{-12mm}% Pull back the box in an inelegant way - but it works!
   \begin{beamercolorbox}[wd=\titleboxwidth]{title}%
   \begin{tikzpicture}[remember picture,overlay]
-
-  	
-  	
+    \node[anchor=south west, xshift=8mm, yshift=-1.2cm, text width=\titleboxwidth] at (current page.north west) {%
+  	    \pgfuseimage{\@UIClogo}
+    };
+  
 	\node[anchor=south west, xshift=8mm, yshift=3.5cm, text width=\titleboxwidth] at (current page.south west) {%
 		{\usebeamerfont{title}\inserttitle\\\usebeamerfont{subtitle}\insertsubtitle}
 	};
@@ -303,7 +310,7 @@
   \includegraphics[height=\paperheight]{#1}%
   }
   \setbeamertemplate{frametitle}{% Same as normal, but with right skip
-    \vspace*{-3.65ex}
+    \vspace*{5mm}
     \vspace*{\titlemanualoffset}
     \begin{beamercolorbox}[leftskip=2cm,rightskip=0.4\textwidth]{frametitle}%
       \usebeamerfont{frametitle}\insertframetitle\\
