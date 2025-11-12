@@ -54,8 +54,14 @@
 % No navigation symbols
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{page number in head/foot}[totalframenumber]%
+\setbeamertemplate{htwd cd head/foot}{%
+	\tiny
 
-\newcommand{\@footlinepayoff}{\usebeamertemplate{page number in head/foot}}
+	\hspace{8mm}{\insertdate}\hspace{4mm} \textbf{HTWD} / {\insertinstitute} / {\insertauthor}\hfill\insertframenumber{}/\inserttotalframenumber
+}
+
+
+\newcommand{\@footlinepayoff}{\usebeamertemplate{htwd cd head/foot}}
 \setbeamertemplate{footline}{%
   \begin{beamercolorbox}[wd=\textwidth,ht=5mm,dp=3mm,rightskip=1cm]{footline}
   \usebeamerfont{footline}\hfill\@footlinepayoff
@@ -67,13 +73,13 @@
   \ifstrempty{#1}{%
     \renewcommand{\@footlinepayoff}{}
     \setbeamercolor{footline}{bg=}
-    \setbeamercolor{block title}{fg=white,bg=uicblue}
-    \setbeamercolor{block body}{fg=white,bg=uicblue}
+    \setbeamercolor{block title}{fg=white,bg=black}
+    \setbeamercolor{block body}{fg=white,bg=black}
   }{
-    \renewcommand{\@footlinepayoff}{\usebeamertemplate{page number in head/foot}}
-    \setbeamercolor{footline}{fg=white,bg=#1}
-    \setbeamercolor{block title}{fg=white,bg=#1}
-    \setbeamercolor{block body}{fg=white,bg=#1}
+    \renewcommand{\@footlinepayoff}{\usebeamertemplate{htwd cd head/foot}}
+    \setbeamercolor{footline}{fg=black,bg=#1}
+    \setbeamercolor{block title}{fg=black,bg=#1}
+    \setbeamercolor{block body}{fg=black,bg=#1}
   }%
 }
 \footlinecolor{} % Default: no footline (enabled after title page)
@@ -89,27 +95,27 @@
 %       \themecolor should only be called from the preamble.
 \newcommand{\themecolor}[1]{
 	\ifstrequal{#1}{dark}{%
-		\setbeamercolor{normal text}{fg=white,bg=uicblue}
+		\setbeamercolor{normal text}{fg=white,bg=black}
 		\setbeamercolor{structure}{fg=white}
 		\renewcommand{\@UIClogo}{whitelogo}
-		\setbeamercolor{block title}{fg=uicblue,bg=steelgray}
-		\setbeamercolor{block body}{fg=uicblue,bg=steelgray}
+		\setbeamercolor{block title}{fg=black,bg=steelgray}
+		\setbeamercolor{block body}{fg=black,bg=steelgray}
 		\usebeamercolor[fg]{normal text}
 	}{}
 	\ifstrequal{#1}{light}{%
-		\setbeamercolor{normal text}{fg=uicblue,bg=white}
-		\setbeamercolor{structure}{fg=uicblue}
+		\setbeamercolor{normal text}{fg=black,bg=white}
+		\setbeamercolor{structure}{fg=black}
 		\renewcommand{\@UIClogo}{collogo}
-		\setbeamercolor{block title}{fg=white,bg=uicblue}
-		\setbeamercolor{block body}{fg=white,bg=uicblue}
+		\setbeamercolor{block title}{fg=white,bg=black}
+		\setbeamercolor{block body}{fg=white,bg=black}
 		\usebeamercolor[fg]{normal text}
 	}{}
 	\ifstrequal{#1}{lightnologo}{%
-		\setbeamercolor{normal text}{fg=uicblue,bg=white}
-		\setbeamercolor{structure}{fg=uicblue}
+		\setbeamercolor{normal text}{fg=black,bg=white}
+		\setbeamercolor{structure}{fg=black}
 		\renewcommand{\@UIClogo}{nologo}
-		\setbeamercolor{block title}{fg=white,bg=uicblue}
-		\setbeamercolor{block body}{fg=white,bg=uicblue}
+		\setbeamercolor{block title}{fg=white,bg=black}
+		\setbeamercolor{block body}{fg=white,bg=black}
 		\usebeamercolor[fg]{normal text}
 	}{}
 }
@@ -264,8 +270,8 @@
     \setbeamercolor{normal text}{fg=uicblue,bg=#2}
   }{}
   \ifstrequal{#2}{expowhite}{ % Also use blue text on expowhite background
-    \setbeamercolor{frametitle}{fg=uicblue}
-    \setbeamercolor{normal text}{fg=uicblue,bg=#2}
+    \setbeamercolor{frametitle}{fg=black}
+    \setbeamercolor{normal text}{fg=black,bg=#2}
   }{ % otherwise use white text
     \setbeamercolor{frametitle}{fg=white}
     \setbeamercolor{normal text}{fg=white,bg=#2}
