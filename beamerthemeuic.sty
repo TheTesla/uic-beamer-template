@@ -137,11 +137,15 @@
 \setbeamerfont{footline}{size=\scriptsize}
 \setbeamerfont{block title}{series=\centering\bfseries}
 
+% normal text must be small - also changes spacing between other text
+\renewcommand{\normalsize}{\fontsize{9pt}{11pt}\selectfont}
+
+
 % Code to get prettier boxes
 \setbeamertemplate{blocks}[rounded]
 
 % Bullets in several levels
-\setbeamertemplate{itemize item}{\textemdash}
+\setbeamertemplate{itemize item}{\textendash}
 \setbeamertemplate{itemize subitem}{\textbullet}
 \setbeamertemplate{itemize subsubitem}{\ensuremath{\circ}}
 
@@ -194,14 +198,14 @@
     };
   
 	\node[anchor=south west, xshift=8mm, yshift=3.5cm, text width=\titleboxwidth] at (current page.south west) {%
-		{\usebeamerfont{title}\inserttitle\\\usebeamerfont{subtitle}\insertsubtitle}
+		{\usebeamerfont{title}\inserttitle\\[3pt]\usebeamerfont{subtitle}\insertsubtitle}
 	};
 
 	\node[anchor=south west, xshift=8mm, yshift=1.5cm, text width=\titleboxwidth] at (current page.south west) {%
 		{   
 			\\
-			{\usebeamerfont{authortitle}\usebeamercolor[fg]{author}\insertauthortitle} \\[-3pt]
-			{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor} \\[-3pt]
+			{\usebeamerfont{authortitle}\usebeamercolor[fg]{author}\insertauthortitle} \\
+			{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor} \\
 			{\usebeamerfont{institute}\usebeamercolor[fg]{author}\insertinstitute}
 		}
 	};
