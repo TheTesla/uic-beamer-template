@@ -78,7 +78,7 @@
 }
 \footlinecolor{} % Default: no footline (enabled after title page)
 
-\pgfdeclareimage[height=0.09\paperheight]{collogo}{assets/htwd_hor_col.pdf}
+\pgfdeclareimage[height=0.06\paperheight]{collogo}{assets/htwd_hor_col.pdf}
 \pgfdeclareimage[width=0.09\paperwidth]{whitelogo}{assets/circular_white.pdf}
 \pgfdeclareimage[width=0.09\paperwidth]{nologo}{assets/placeholder.png}
 \newcommand{\@UIClogo}{collogo}
@@ -115,7 +115,7 @@
 }
 \themecolor{light}
 
-\setbeamercolor{title}{fg=uicblue,bg=white}
+\setbeamercolor{title}{fg=black,bg=white}
 \setbeamercolor{alerted text}{fg=uicred}
 \setbeamercolor{author}{fg=black}
 \setbeamercolor{date}{fg=black}
@@ -123,7 +123,7 @@
 \setbeamerfont{authortitle}{size=\scriptsize}
 \setbeamerfont{author}{series=\bfseries,size=\scriptsize}
 \setbeamerfont{institute}{size=\scriptsize}
-\setbeamerfont{date}{size=\tiny}
+\setbeamerfont{date}{size=\scriptsize}
 \setbeamerfont{title}{series=\bfseries}
 \setbeamerfont{subtitle}{series=\mdseries,size=\footnotesize}
 \setbeamerfont{frametitle}{series=\bfseries}
@@ -180,19 +180,19 @@
 
   	
   	
-	\node[anchor=south west, xshift=8mm, yshift=4cm, text width=\titleboxwidth] at (current page.south west) {%
+	\node[anchor=south west, xshift=8mm, yshift=3.5cm, text width=\titleboxwidth] at (current page.south west) {%
 		{\usebeamerfont{title}\inserttitle\\\usebeamerfont{subtitle}\insertsubtitle}
 	};
 
-	\node[anchor=south west, xshift=8mm, yshift=2cm, text width=\titleboxwidth] at (current page.south west) {%
+	\node[anchor=south west, xshift=8mm, yshift=1.5cm, text width=\titleboxwidth] at (current page.south west) {%
 		{   
 			\\
-			{\usebeamerfont{authortitle}\usebeamercolor[fg]{author}\insertauthortitle} \\
-			{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor} \\
+			{\usebeamerfont{authortitle}\usebeamercolor[fg]{author}\insertauthortitle} \\[-3pt]
+			{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor} \\[-3pt]
 			{\usebeamerfont{institute}\usebeamercolor[fg]{author}\insertinstitute}
 		}
 	};
-	\node[anchor=south west, xshift=8mm, yshift=1cm] at (current page.south west) {%
+	\node[anchor=south west, xshift=8mm, yshift=0.7cm] at (current page.south west) {%
 		{\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate}
 	};
 \end{tikzpicture}
